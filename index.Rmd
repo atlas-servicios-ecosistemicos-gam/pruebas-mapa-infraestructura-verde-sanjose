@@ -79,6 +79,7 @@ values_infraestructura_verde <-
 pal <- colorFactor(
   palette = colores_infraestructura_verde, 
   domain = values_infraestructura_verde,
+  alpha = TRUE,
   na.color = "transparent"
 )
 
@@ -132,7 +133,6 @@ leaflet() %>%
     options = scaleBarOptions(imperial = FALSE)
   ) %>%
   addMouseCoordinates() %>%
-  addSearchOSM() %>%
+  addSearchOSM(options = ) %>%
   addResetMapButton()
-
 ```

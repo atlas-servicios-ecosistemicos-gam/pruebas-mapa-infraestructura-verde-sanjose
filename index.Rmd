@@ -40,7 +40,7 @@ sf_limite_sanjose_web <-
 # Capa raster de infraestructura verde (en Web Mercator)
 raster_infraestructura_verde <-
   raster(url_raster_infraestructura_verde) %>%
-  aggregate(fact=c(2), fun=modal) %>% # ¡¡HAY QUE TRATAR DE ELIMINAR ESTA AGRUPACIÓN. PODRÍA FUNCIONAR AL USAR MÁS MEMORIA LINUX!!
+  #aggregate(fact=c(2), fun=modal) %>% # ¡¡HAY QUE TRATAR DE ELIMINAR ESTA AGRUPACIÓN. PODRÍA FUNCIONAR AL USAR MÁS MEMORIA LINUX!!
   crop(sf_limite_sanjose_web) %>%
   mask(sf_limite_sanjose_web)
 
@@ -106,6 +106,7 @@ leaflet() %>%
   ) %>%
   addRasterImage(
     raster_infraestructura_verde,
+    maxBytes = 12 * 1024 * 1024,
     colors = pal,
     opacity = 1,
     group = "Infraestructura verde"
